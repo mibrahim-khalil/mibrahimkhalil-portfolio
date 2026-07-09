@@ -33,7 +33,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="mailto:your-email@example.com"
+            href="mailto:mibrahimkhalil564@gmail.com"
             className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-sky-500"
           >
             <Mail size={18} />
