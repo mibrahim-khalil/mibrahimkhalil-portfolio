@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,500;1,600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-[#f8fafc] text-slate-950 dark:bg-[#070b14] dark:text-white font-sans;
+  }
+
+  ::selection {
+    @apply bg-sky-400 text-white;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-5 sm:px-6 lg:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .section-title {
+    @apply text-4xl md:text-6xl font-black tracking-tight text-center mb-5;
+  }
+
+  .section-subtitle {
+    @apply text-slate-600 dark:text-slate-400 text-center max-w-2xl mx-auto mb-14;
+  }
+
+  .glass-card {
+    @apply bg-white/75 dark:bg-white/5 backdrop-blur-xl border border-slate-200 dark:border-white/10 shadow-sm;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-sky-500 via-blue-500 to-cyan-400 bg-clip-text text-transparent;
+  }
+}
