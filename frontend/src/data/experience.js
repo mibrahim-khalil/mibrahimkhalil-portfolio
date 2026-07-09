@@ -1,15 +1,15 @@
 export const experiences = [
   {
-    year: '2024 - Present',
-    title: 'Software Engineering Student',
-    company: 'University / Institute',
+    year: 'June 2026 - Present',
+    title: 'Full Stack Web Developer',
+    company: 'Guide to Pakistan',
     description:
-      'Studying programming, software engineering, databases, web development, and problem solving.',
+      'Building practical projects using MongoDB, Express.js, React.js, Node.js, and Tailwind CSS.',
   },
   {
-    year: '2024 - Present',
-    title: 'MERN Stack Developer',
-    company: 'Self Learning / Projects',
+    year: 'June 2026 - Present',
+    title: 'Full Stack Web Developer',
+    company: 'Cyber X Soft.net',
     description:
       'Building practical projects using MongoDB, Express.js, React.js, Node.js, and Tailwind CSS.',
   },
