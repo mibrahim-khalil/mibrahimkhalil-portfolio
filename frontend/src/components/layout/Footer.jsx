@@ -25,7 +25,7 @@ export default function Footer() {
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/in/muhammad-ibrahim-khalil-680b6526a/"
             target="_blank"
             className="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-sky-500"
           >
