@@ -90,7 +90,7 @@ export default function Contact() {
             <h3 className="text-3xl font-bold mb-5">Let's work together</h3>
 
             <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-              I am open to internships, freelance projects, collaborations, and
+              I am open to freelance projects, collaborations, and
               junior MERN stack developer opportunities.
             </p>
 
@@ -102,7 +102,7 @@ export default function Contact() {
                 <div>
                   <p className="font-bold">Email</p>
                   <p className="text-slate-600 dark:text-slate-400">
-                    your-email@example.com
+                    mibrahimkhalil564@example.com
                   </p>
                 </div>
               </div>
@@ -114,7 +114,7 @@ export default function Contact() {
                 <div>
                   <p className="font-bold">Phone</p>
                   <p className="text-slate-600 dark:text-slate-400">
-                    +92 300 0000000
+                    +92 336 5643146
                   </p>
                 </div>
               </div>
@@ -126,7 +126,7 @@ export default function Contact() {
                 <div>
                   <p className="font-bold">Location</p>
                   <p className="text-slate-600 dark:text-slate-400">
-                    Pakistan
+                    Islamabad, Pakistan
                   </p>
                 </div>
               </div>
