@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Send } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { Send, CheckCircle, AlertCircle, Mail, Phone, MapPin } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 export default function Contact() {
   const [form, setForm] = useState({
@@ -15,6 +15,8 @@ export default function Contact() {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    // Clear status when user starts typing again
+    if (status.message) setStatus({ type: '', message: '' });
   };
 
   const handleSubmit = async (e) => {
@@ -34,13 +36,22 @@ export default function Contact() {
       const data = await res.json();
 
       if (res.ok) {
-        setStatus({ type: 'success', message: 'Message sent successfully! I will reach you soon.' });
+        setStatus({
+          type: 'success',
+          message: 'Message sent successfully! I will reach you soon.'
+        });
         setForm({ name: '', email: '', subject: '', message: '' });
       } else {
-        setStatus({ type: 'error', message: data.message || 'Failed to send message' });
+        setStatus({
+          type: 'error',
+          message: data.message || 'Failed to send message. Please try again.'
+        });
       }
     } catch (error) {
-      setStatus({ type: 'error', message: 'Cannot connect to server. Is backend running?' });
+      setStatus({
+        type: 'error',
+        message: 'Cannot connect to server. Make sure backend is running.'
+      });
       console.error(error);
     } finally {
       setLoading(false);
@@ -55,95 +66,138 @@ export default function Contact() {
         </h2>
 
         <p className="section-subtitle">
-          Have a project idea or opportunity? Send me a message.
+          Have a project or opportunity? I'd love to hear from you.
         </p>
 
-        <div className="grid lg:grid-cols-2 gap-10 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
+          {/* Left Side - Info */}
           <motion.div
-            initial={{ opacity: 0, x: -35 }}
+            initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="glass-card rounded-3xl p-8"
+            className="lg:col-span-2 glass-card rounded-3xl p-8 h-fit"
           >
-            <h3 className="text-3xl font-bold mb-5">Let's work together</h3>
-            <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-8">
-              I am open to internships, freelance projects, collaborations, and junior MERN stack developer opportunities.
+            <h3 className="text-3xl font-bold mb-6">Let's connect</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-8">
+              I'm currently open to new opportunities, collaborations, and exciting projects.
             </p>
 
-            <div className="space-y-5">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-500/10 text-sky-500 flex items-center justify-center">
-                  ✉️
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-500/10 text-sky-500 flex items-center justify-center flex-shrink-0">
+                  <Mail size={24} />
                 </div>
                 <div>
-                  <p className="font-bold">Email</p>
-                  <p className="text-slate-600 dark:text-slate-400">your-email@gmail.com</p>
+                  <p className="font-semibold text-lg">Email</p>
+                  <p className="text-slate-600 dark:text-slate-400">mibrahimkhalil.dev@gmail.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-500/10 text-sky-500 flex items-center justify-center flex-shrink-0">
+                  <Phone size={24} />
+                </div>
+                <div>
+                  <p className="font-semibold text-lg">Phone</p>
+                  <p className="text-slate-600 dark:text-slate-400">+92 300 1234567</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-sky-100 dark:bg-sky-500/10 text-sky-500 flex items-center justify-center flex-shrink-0">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                  <p className="font-semibold text-lg">Location</p>
+                  <p className="text-slate-600 dark:text-slate-400">Pakistan</p>
                 </div>
               </div>
             </div>
           </motion.div>
 
-          <motion.form
-            initial={{ opacity: 0, x: 35 }}
+          {/* Right Side - Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            onSubmit={handleSubmit}
-            className="glass-card rounded-3xl p-8 space-y-5"
+            className="lg:col-span-3"
           >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              value={form.name}
-              onChange={handleChange}
-              required
-              className="w-full px-5 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 outline-none focus:border-sky-500"
-            />
+            <form onSubmit={handleSubmit} className="glass-card rounded-3xl p-8 space-y-6">
+              <div className="grid md:grid-cols-2 gap-6">
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="Your Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 focus:border-sky-500 outline-none transition"
+                />
 
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              value={form.email}
-              onChange={handleChange}
-              required
-              className="w-full px-5 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 outline-none focus:border-sky-500"
-            />
+                <input
+                  type="email"
+                  name="email"
+                  placeholder="Your Email"
+                  value={form.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 focus:border-sky-500 outline-none transition"
+                />
+              </div>
 
-            <input
-              type="text"
-              name="subject"
-              placeholder="Subject"
-              value={form.subject}
-              onChange={handleChange}
-              required
-              className="w-full px-5 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 outline-none focus:border-sky-500"
-            />
+              <input
+                type="text"
+                name="subject"
+                placeholder="Subject"
+                value={form.subject}
+                onChange={handleChange}
+                required
+                className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 focus:border-sky-500 outline-none transition"
+              />
 
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              rows="6"
-              value={form.message}
-              onChange={handleChange}
-              required
-              className="w-full px-5 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 outline-none focus:border-sky-500 resize-none"
-            />
+              <textarea
+                name="message"
+                placeholder="Your Message..."
+                rows="6"
+                value={form.message}
+                onChange={handleChange}
+                required
+                className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 focus:border-sky-500 outline-none resize-none transition"
+              />
 
-            <button
-              type="submit"
-              disabled={loading}
-              className="w-full flex items-center justify-center gap-2 px-7 py-4 bg-sky-500 text-white rounded-2xl font-bold hover:bg-sky-600 transition disabled:opacity-70"
-            >
-              {loading ? 'Sending...' : 'Send Message'} <Send size={18} />
-            </button>
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex items-center justify-center gap-3 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-2xl font-semibold text-lg hover:scale-[1.02] transition-all duration-300 disabled:opacity-70"
+              >
+                {loading ? (
+                  <>Sending Message...</>
+                ) : (
+                  <>
+                    Send Message <Send size={20} />
+                  </>
+                )}
+              </button>
 
-            {status.message && (
-              <p className={`text-center font-semibold ${status.type === 'success' ? 'text-green-500' : 'text-red-500'}`}>
-                {status.message}
-              </p>
-            )}
-          </motion.form>
+              <AnimatePresence>
+                {status.message && (
+                  <motion.p
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className={`flex items-center justify-center gap-2 text-center font-medium p-4 rounded-2xl ${
+                      status.type === 'success'
+                        ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400'
+                        : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
+                    }`}
+                  >
+                    {status.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
+                    {status.message}
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </form>
+          </motion.div>
         </div>
       </div>
     </section>
