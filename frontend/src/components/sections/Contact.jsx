@@ -15,7 +15,6 @@ export default function Contact() {
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    // Clear status when user starts typing again
     if (status.message) setStatus({ type: '', message: '' });
   };
 
@@ -50,9 +49,9 @@ export default function Contact() {
     } catch (error) {
       setStatus({
         type: 'error',
-        message: 'Cannot connect to server. Make sure backend is running.'
+        message: 'Backend is waking up... Please wait 10-15 seconds and try again.'
       });
-      console.error(error);
+      console.error('Connection Error:', error);
     } finally {
       setLoading(false);
     }
@@ -70,7 +69,7 @@ export default function Contact() {
         </p>
 
         <div className="grid lg:grid-cols-5 gap-10 max-w-6xl mx-auto">
-          {/* Left Side - Info */}
+          {/* Contact Info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -115,7 +114,7 @@ export default function Contact() {
             </div>
           </motion.div>
 
-          {/* Right Side - Form */}
+          {/* Contact Form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -133,7 +132,6 @@ export default function Contact() {
                   required
                   className="w-full px-6 py-4 rounded-2xl bg-white dark:bg-white/10 border border-slate-200 dark:border-white/10 focus:border-sky-500 outline-none transition"
                 />
-
                 <input
                   type="email"
                   name="email"
@@ -157,7 +155,7 @@ export default function Contact() {
 
               <textarea
                 name="message"
-                placeholder="Your Message..."
+                placeholder="Write your message here..."
                 rows="6"
                 value={form.message}
                 onChange={handleChange}
@@ -168,15 +166,10 @@ export default function Contact() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-3 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-2xl font-semibold text-lg hover:scale-[1.02] transition-all duration-300 disabled:opacity-70"
+                className="w-full flex items-center justify-center gap-3 py-4 bg-gradient-to-r from-sky-500 to-blue-600 text-white rounded-2xl font-semibold text-lg hover:scale-[1.02] active:scale-95 transition-all duration-300 disabled:opacity-70"
               >
-                {loading ? (
-                  <>Sending Message...</>
-                ) : (
-                  <>
-                    Send Message <Send size={20} />
-                  </>
-                )}
+                {loading ? 'Sending Message...' : 'Send Message'}
+                {!loading && <Send size={20} />}
               </button>
 
               <AnimatePresence>
@@ -191,7 +184,7 @@ export default function Contact() {
                         : 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400'
                     }`}
                   >
-                    {status.type === 'success' ? <CheckCircle size={20} /> : <AlertCircle size={20} />}
+                    {status.type === 'success' ? <CheckCircle size={22} /> : <AlertCircle size={22} />}
                     {status.message}
                   </motion.p>
                 )}
