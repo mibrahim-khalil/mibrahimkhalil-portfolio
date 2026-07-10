@@ -28,15 +28,15 @@ app.use(cors({
 // Routes
 app.use('/api/messages', messageRoutes);
 
-// Health Check Route
+// Health Check
 app.get('/', (req, res) => {
-  res.json({
-    success: true,
-    message: "Muhammad Ibrahim Khalil - Portfolio Backend is Running"
+  res.json({ 
+    success: true, 
+    message: "Muhammad Ibrahim Khalil - Portfolio Backend is Running 🚀" 
   });
 });
 
-// Error Handler (Must be last)
+// Global Error Handler (Must be at the end)
 app.use(errorHandler);
 
 // Start Server
