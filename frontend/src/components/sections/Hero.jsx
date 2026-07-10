@@ -67,7 +67,7 @@ export default function Hero() {
               </div>
 
               <div className="flex items-center gap-4 mt-10">
-                <a href="https://github.com/" target="_blank" className="w-11 h-11 rounded-full glass-card flex items-center justify-center hover:text-sky-500 transition">
+                <a href="https://github.com/mibrahim-khalil" target="_blank" className="w-11 h-11 rounded-full glass-card flex items-center justify-center hover:text-sky-500 transition">
                   <Github size={22} />
                 </a>
                 <a href="https://linkedin.com/" target="_blank" className="w-11 h-11 rounded-full glass-card flex items-center justify-center hover:text-sky-500 transition">
