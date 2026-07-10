@@ -70,7 +70,7 @@ export default function Hero() {
                 <a href="https://github.com/mibrahim-khalil" target="_blank" className="w-11 h-11 rounded-full glass-card flex items-center justify-center hover:text-sky-500 transition">
                   <Github size={22} />
                 </a>
-                <a href="https://linkedin.com/" target="_blank" className="w-11 h-11 rounded-full glass-card flex items-center justify-center hover:text-sky-500 transition">
+                <a href="https://github.com/mibrahim-khalil" target="_blank" className="w-11 h-11 rounded-full glass-card flex items-center justify-center hover:text-sky-500 transition">
                   <Linkedin size={22} />
                 </a>
                 <a href="mailto:your-email@gmail.com" className="w-11 h-11 rounded-full glass-card flex items-center justify-center hover:text-sky-500 transition">
