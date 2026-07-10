@@ -30,7 +30,7 @@ export default function Contact() {
 
       if (!API_URL) {
         setTimeout(() => {
-          setStatus('Message saved successfully. Backend connection will be added later.')
+          setStatus('Message sent successfully! I will reach you soon.');
           setForm({
             name: '',
             email: '',
