@@ -3,8 +3,8 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import morgan from 'morgan';
-import connectDB from './config/database.js';
 
+import connectDB from './config/database.js';
 import messageRoutes from './routes/messageRoutes.js';
 import errorHandler from './middleware/errorHandler.js';
 
@@ -28,15 +28,15 @@ app.use(cors({
 // Routes
 app.use('/api/messages', messageRoutes);
 
-// Health Check
+// Health Check Route
 app.get('/', (req, res) => {
-  res.json({ 
-    success: true, 
-    message: 'Muhammad Ibrahim Khalil - Portfolio Backend is Running 🚀' 
+  res.json({
+    success: true,
+    message: "Muhammad Ibrahim Khalil - Portfolio Backend is Running"
   });
 });
 
-// Error Handler (Must be at the end)
+// Error Handler (Must be last)
 app.use(errorHandler);
 
 // Start Server
