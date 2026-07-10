@@ -25,7 +25,6 @@ export default function Navbar() {
           <h1 className="text-2xl font-bold font-serif tracking-tight text-slate-900 dark:text-white">
             mibrahimkhalil
           </h1>
-          <span className="text-2xl">🌙</span>
         </div>
 
         {/* Desktop Navigation */}
